@@ -11,10 +11,10 @@
   </header>
 
   <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-    <% images.forEach(function(pic){ %>
+    <% images.forEach(function(pic){ %> <%=console.log(pic.image.data.buffer)%>
     <div class="col-md-3 col-sm-6">
       <div class="thumbnail">
-        <img src="data: image/jpeg;<%= images.data%>" />
+        <img src="data: image/jpg;base64,<%=pic.image.data.buffe%>" />
         <div class="caption">
           <h4><%= pic.name %></h4>
         </div>

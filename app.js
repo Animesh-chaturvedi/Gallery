@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var multer = require("multer");
 var fs = require("fs-extra");
+var en = require("int-encoder");
 var port = 3000;
 var ip = "localhost";
 
@@ -12,6 +13,11 @@ var upload = multer({ dest: "uploads/" });
 mongoose.connect("mongodb://localhost:27017/images_db", {
   useNewUrlParser: true
 });
+
+exports.index = function(req, res) {
+  // send moment to your ejs
+  res.render("gallery", { en: en });
+};
 
 var imagesSchema = new mongoose.Schema({
   name: String,
