@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var multer = require("multer");
 var fs = require("fs-extra");
-var en = require("int-encoder");
 var port = 3000;
 var ip = "localhost";
 
@@ -14,7 +13,6 @@ mongoose.connect("mongodb://localhost:27017/images_db", {
   useNewUrlParser: true
 });
 
-console.log(en.encode());
 var imagesSchema = new mongoose.Schema({
   name: String,
   image: { data: Buffer, contentType: String }
@@ -38,8 +36,9 @@ app.get("/", function(req, res) {
 app.post("/", upload.single("photo"), function(req, res) {
   var a = new Image();
   a.name = req.body.name;
-  a.image.data = fs.readFileSync(req.file.path);
-  a.image.contentType = "image/jpeg";
+  var img = fs.readFileSync(req.file.path);
+  a.image.data = img.toString("base64");
+  a.image.contentType = "image/jpg";
   a.save(function(err, a) {
     if (err) throw err;
 
