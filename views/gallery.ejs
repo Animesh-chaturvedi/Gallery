@@ -1,0 +1,27 @@
+<% include partials/header %>
+<div class="container" style="text-align: center">
+  <header class="jumbotron">
+    <div class="container">
+      <h1>GALLERY</h1>
+      <p>View our hand-picked pictures</p>
+      <p>
+        <a class="btn btn-primary btn-large" href="/new">Add a New PICTURE</a>
+      </p>
+    </div>
+  </header>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <% images.forEach(function(pic){ %>
+    <div class="col-md-3 col-sm-6">
+      <div class="thumbnail">
+        <img src="data: image/jpeg;<%= images.data%>" />
+        <div class="caption">
+          <h4><%= pic.name %></h4>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+<% include partials/footer %>
