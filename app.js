@@ -14,11 +14,7 @@ mongoose.connect("mongodb://localhost:27017/images_db", {
   useNewUrlParser: true
 });
 
-exports.index = function(req, res) {
-  // send moment to your ejs
-  res.render("gallery", { en: en });
-};
-
+console.log(en.encode());
 var imagesSchema = new mongoose.Schema({
   name: String,
   image: { data: Buffer, contentType: String }
