@@ -11,11 +11,11 @@
   </header>
 
   <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-    <% images.forEach(function(pic){ %> <%=console.log(pic.image.data.buffer)%>
+    <% images.forEach(function(pic){ %> <%= console.log(Buffer.from(pic.image.data).toString('base64'))%>
     <div class="col-md-3 col-sm-6">
       <div class="thumbnail">
-        <img src="data: image/jpg;base64,<%=pic.image.data.buffer%>" />
-        <div class="caption">
+        <img src="data: image/jpg;base64, <%= Buffer.from(pic.image.data).toString('base64')%>" />
+        <div class=" caption">
           <h4><%= pic.name %></h4>
         </div>
       </div>
