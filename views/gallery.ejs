@@ -11,10 +11,10 @@
   </header>
 
   <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-    <% images.forEach(function(pic){ %> <%= console.log(Buffer.from(pic.image.data).toString('base64'))%>
+    <% images.forEach(function(pic){ %>
     <div class="col-md-3 col-sm-6">
       <div class="thumbnail">
-        <img src="data: image/jpg;base64, <%= Buffer.from(pic.image.data).toString('base64')%>" />
+        <img src="../uploads/<%=pic.image%>" />
         <div class=" caption">
           <h4><%= pic.name %></h4>
         </div>
@@ -23,5 +23,5 @@
     <% }); %>
   </div>
 </div>
-
+</div>
 <% include partials/footer %>
